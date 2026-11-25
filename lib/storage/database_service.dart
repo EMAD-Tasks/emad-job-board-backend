@@ -72,7 +72,6 @@ class DatabaseService {
 
   /// Recupera il file CV dalla cartella uploads/ (null se non esiste)
   File? getCvFile(String fileName) {
-    // Evita path traversal (es. "../../db.json")
     final safeName = Uri.file(fileName).pathSegments.last;
     final file = File('${uploadsDir.path}/$safeName');
     return file.existsSync() ? file : null;
